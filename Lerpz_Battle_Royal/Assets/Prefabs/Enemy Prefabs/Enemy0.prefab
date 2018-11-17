@@ -118,6 +118,8 @@ MonoBehaviour:
   rot0: 1
   range0: 30
   range1: 4
+  range2: 2
+  range3: 6
 --- !u!135 &135778638583966878
 SphereCollider:
   m_ObjectHideFlags: 1
