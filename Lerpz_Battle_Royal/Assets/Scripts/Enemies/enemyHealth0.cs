@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class enemyHealth0 : MonoBehaviour {
 
-public int health = 0;	//the health
-public int ouch = 0;	//damage from tag Bullet0
+public int Ehealth = 0;		//the health, for the enemy
+public playerHealth stat;	//the plyer health script(required for damage calculations)
+
+	void Start(){
+		var temp0 = GameObject.FindWithTag("Player");
+		stat = temp0.GetComponent<playerHealth>();
+	}
 
 	void Update(){
-		if(health < 1){
+		if(Ehealth < 1){
 			//death
 		}
 	}
 	
 		//raycast damage script
 	public void TakeDamage(){
-		health -= ouch;
+		Ehealth -= stat.ouch0;
 	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Bullet0"){
-			health -= ouch;
+			Ehealth -= stat.ouch0;
 		}
 	}
 }
