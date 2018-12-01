@@ -11,10 +11,10 @@ public float spd1 = 0;		//sidestep movement speed
 public float rot0 = 0;		//rotation speed
 private float x = 0;
 private float z = 0;
-public float range0 = 0;	//how far the enemy can see (forwards)
+public float range0 = 0;	//how far the enemy checks for the player (forwards, far)
 public float range1 = 0;	//how far the enemy checks for a wall (sideways)
 public float range2 = 0;	//how far the enemy checks for a wall (downwards)
-public float range3 = 0;	//how far the enemy checks for the player (forwards)
+public float range3 = 0;	//how far the enemy checks for the player (forwards, close)
 private Transform target0;	//the player target
 private bool enter = false;	//is the player near?
 private RaycastHit hit0;	//what the raycast hits
