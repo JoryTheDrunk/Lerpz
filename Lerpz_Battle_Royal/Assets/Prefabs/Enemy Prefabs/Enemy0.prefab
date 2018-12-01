@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 135778638583966878}
   - component: {fileID: 54808821890471228}
   - component: {fileID: 114030067797377242}
+  - component: {fileID: 114808181524220238}
   m_Layer: 0
   m_Name: Enemy0
   m_TagString: Enemy
@@ -119,7 +120,22 @@ MonoBehaviour:
   range0: 30
   range1: 4
   range2: 2
-  range3: 6
+  range3: 10
+--- !u!114 &114808181524220238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015556774067422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 365db9ff2bb9ecc429c82b867ccfb0a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: {fileID: 54259700690096130, guid: ed9d4fee03e17594ea81e2aa621ed6d6, type: 2}
+  range0: 10
+  spd0: 10
+  setDelay0: 15
 --- !u!135 &135778638583966878
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23975664535323544}
   - component: {fileID: 136444678341595178}
   - component: {fileID: 54259700690096130}
+  - component: {fileID: 114052572009940758}
   m_Layer: 0
   m_Name: MockBullet0
   m_TagString: Bullet1
@@ -100,6 +101,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114052572009940758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1078630148617350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded86bef176b55e4ea89ab8f09746de2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reach: 300
 --- !u!136 &136444678341595178
 CapsuleCollider:
   m_ObjectHideFlags: 1
