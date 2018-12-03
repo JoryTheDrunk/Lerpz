@@ -82,7 +82,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
     // Property block for pushing to shader
     private AvatarMaterialPropertyBlock LocalAvatarMaterialPropertyBlock;
 
-    public static int RENDER_QUEUE = 3640;
+    public static int RENDER_QUEUE = 2000;
 
     // Shader properties
     public static string AVATAR_SHADER_COMBINED = "OvrAvatar/Avatar_Mobile_CombinedMesh";
