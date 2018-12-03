@@ -17,17 +17,18 @@ public int setDelay0 = 0;	//set the delay timer
 		delay0 = setDelay0;
 	}
 
-	void Update(){
+	void FixedUpdate(){
+		delay0 -= 1;
 			//if the player is in the raycast, reduce the delay timer
 		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit0, range0) && hit0.transform.tag == "Player"){
-			delay0 -= 1;
+			if(delay0 < 0){	//when delay is less than zero, clone/shoot the projectile (bullet), and then reset delay to the default
+				Rigidbody clone0;
+					clone0 = Instantiate(ammo, transform.position, transform.rotation);
+					clone0.velocity = transform.TransformDirection(Vector3.forward * spd0);
+				delay0 = setDelay0;
+			}
 		}
-		if(delay0 < 1){	//when delay is less than zero, clone/shoot the projectile (bullet), and then reset delay to the default
-			Rigidbody clone0;
-				clone0 = Instantiate(ammo, transform.position, transform.rotation);
-				clone0.velocity = transform.TransformDirection(Vector3.forward * spd0);
-			delay0 = setDelay0;
-		}
+		
 		
 		Vector3 forward = transform.TransformDirection(Vector3.forward) * range0;
 		Debug.DrawRay(transform.position, forward, Color.red);
