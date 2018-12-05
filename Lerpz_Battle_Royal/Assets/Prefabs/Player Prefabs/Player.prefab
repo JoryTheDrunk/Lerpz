@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4980950764672624}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FirePointL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,6 +907,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1474223213586144
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4417331328435374}
+  m_Layer: 0
+  m_Name: FirePointR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1474363152737090
 GameObject:
   m_ObjectHideFlags: 1
@@ -1298,7 +1313,7 @@ GameObject:
   - component: {fileID: 114557492924689484}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1865,6 +1880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827524988552934}
   - component: {fileID: 95624400786487546}
+  - component: {fileID: 114109742518335096}
   m_Layer: 0
   m_Name: SciFiGun_Specular
   m_TagString: Untagged
@@ -2593,6 +2609,19 @@ Transform:
   m_Father: {fileID: 4442779901003402}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4417331328435374
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474223213586144}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0905, y: 0.042, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4827524988552934}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4431140194589752
 Transform:
   m_ObjectHideFlags: 1
@@ -3296,6 +3325,7 @@ Transform:
   - {fileID: 4597056147431618}
   - {fileID: 4805606069659998}
   - {fileID: 4024979721553624}
+  - {fileID: 4417331328435374}
   m_Father: {fileID: 4697653985489232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -4704,7 +4734,7 @@ MonoBehaviour:
   Acceleration: 1
   Damping: 0.3
   BackAndSideDampen: 0.5
-  JumpForce: 0.3
+  JumpForce: 4
   RotationAmount: 1.5
   RotationRatchet: 45
   SnapRotation: 0
@@ -4796,6 +4826,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114109742518335096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1966864125375194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c52620adae851f48bb747edc552d0cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1474223213586144}
 --- !u!114 &114185699594744844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5408,7 +5450,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b71356db2bf0f2c41b8f6b834eed3946, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08129da9882d3404c942ac4a34f0ab6e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15336,7 +15378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2.59}
-  m_SizeDelta: {x: 10, y: 10}
+  m_SizeDelta: {x: 12, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224449495916720072
 RectTransform:
