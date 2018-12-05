@@ -11,11 +11,11 @@ public class toggleTutorial : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown("right shift") && IsTutorial == true)
+		if (OVRInput.GetDown(OVRInput.Button.Four) && IsTutorial == true)
 		{
 			IsTutorial = false;
 		}
-		else if(Input.GetKeyDown("right shift") && IsTutorial == false)
+		else if(OVRInput.GetDown(OVRInput.Button.Four) && IsTutorial == false)
 		{
 			IsTutorial = true;
 		}

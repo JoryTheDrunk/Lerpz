@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[AddComponentMenu("(Player)/Left Hand Fire")]
+[AddComponentMenu("(Player)/Right Hand Fire")]
 
-public class RayShooter : MonoBehaviour {
-    private Camera _camera;
+public class RayShootRighty : MonoBehaviour {
+ private Camera _camera;
     [SerializeField]
     private GameObject firePoint;
 
@@ -29,7 +29,7 @@ public class RayShooter : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
+        if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             Ray ray = new Ray(firePoint.transform.position, firePoint.transform.forward);
             RaycastHit hit;
