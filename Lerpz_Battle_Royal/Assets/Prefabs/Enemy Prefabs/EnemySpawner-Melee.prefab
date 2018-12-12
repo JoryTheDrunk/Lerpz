@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33426885078419664}
   - component: {fileID: 23826733216028300}
   - component: {fileID: 114124743717325042}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: EnemySpawner-Melee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,4 +95,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af39b66925c2bb4aa871aae2838cd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy0: {fileID: 54010617384847262, guid: 8892e37ece65de146b70c8e97aa401ff, type: 2}
+  enemy0:
+  - {fileID: 4044665779030020, guid: 8892e37ece65de146b70c8e97aa401ff, type: 2}

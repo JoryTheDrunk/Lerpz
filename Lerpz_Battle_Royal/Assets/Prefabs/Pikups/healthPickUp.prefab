@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114075603911111728}
   m_Layer: 0
   m_Name: healthPickUp
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostHP: 10
-  healing: 40
+  healing: 50
   stat: {fileID: 0}
   ded: {fileID: 0}
 --- !u!135 &135176332802259436

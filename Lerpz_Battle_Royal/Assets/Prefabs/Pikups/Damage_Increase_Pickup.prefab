@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114582516713392194}
   m_Layer: 0
   m_Name: Damage_Increase_Pickup
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df26f84c013ac054582dd76641dbeba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boostHurt: 10
+  boostHurt: 5
   stat: {fileID: 0}
   ded: {fileID: 0}
 --- !u!135 &135569839631327992

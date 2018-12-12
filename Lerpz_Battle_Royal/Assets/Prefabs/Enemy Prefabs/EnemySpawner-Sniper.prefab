@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33085629815041072}
   - component: {fileID: 23352511615966558}
   - component: {fileID: 114355632723589636}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: EnemySpawner-Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,4 +95,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af39b66925c2bb4aa871aae2838cd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy0: {fileID: 54522260861080008, guid: ae4d259a6670c1749ba94d06fda47403, type: 2}
+  enemy0:
+  - {fileID: 4167171990188844, guid: ae4d259a6670c1749ba94d06fda47403, type: 2}
