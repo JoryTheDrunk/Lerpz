@@ -16,9 +16,10 @@ public float range1 = 0;	//how far the enemy checks for a wall (sideways)
 public float range2 = 0;	//how far the enemy checks for a wall (downwards)
 public float range3 = 0;	//how far the enemy checks for the player (forwards, close)
 private Transform target0;	//the player target
-private bool enter = false;	//is the player near?
+public bool enter = false;	//is the player near?
 private RaycastHit hit0;	//what the raycast hits
 private RaycastHit hit1;	//what the raycast hits
+
 
 	void Start(){
 		var temp0 = GameObject.FindWithTag("Player");
@@ -47,31 +48,24 @@ private RaycastHit hit1;	//what the raycast hits
 			transform.Translate(Vector3.forward * spd0 * Time.deltaTime);
 		}
 			//raycasts to the right
-		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit1, range1) && hit1.transform.tag == "Wall"){
+		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit1, range1) && hit1.transform.tag == "Wall" || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit1, range1) && hit1.transform.tag == "Hookable" ){
 				//sidesteps to the left, away from the wall
 			transform.Translate(-Vector3.right * spd1 * Time.deltaTime);
 		}	//raycasts to the left (-right)
-		if(Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.right), out hit1, range1) && hit1.transform.tag == "Wall"){
+		if(Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.right), out hit1, range1) && hit1.transform.tag == "Wall" || Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.right), out hit1, range1) && hit1.transform.tag == "Hookable"){
 				//sidesteps to the right, away from the wall
 			transform.Translate(Vector3.right * spd1 * Time.deltaTime);
 		}
-		if(Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit1, range2) && hit1.transform.tag == "Wall"){
+		if(Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit1, range2) && hit1.transform.tag == "Wall" || Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit1, range2) && hit1.transform.tag == "Hookable"){
 				//sidesteps upwards, away from the floor
 			transform.Translate(Vector3.up * spd1 * Time.deltaTime);
 		}
 			//debug lines, drawn to show the raycasts
-		Vector3 forward = transform.TransformDirection(Vector3.forward) * range0;
-		Debug.DrawRay(transform.position, forward, Color.red);
-		Vector3 forward2 = transform.TransformDirection(Vector3.forward) * range3;
-		Debug.DrawRay(transform.position, forward2, Color.green);
-		Vector3 left = transform.TransformDirection(-Vector3.right) * range1;
-		Debug.DrawRay(transform.position, left, Color.green);
-		Vector3 right = transform.TransformDirection(Vector3.right) * range1;
-		Debug.DrawRay(transform.position, right, Color.green);
+
 		Vector3 up = transform.TransformDirection(-Vector3.up) * range2;
 		Debug.DrawRay(transform.position, up, Color.blue);
 	}
-
+/*
 	void OnTriggerEnter(Collider other){
 			//when the player triggers the collider
 		if(other.gameObject.tag == "Player"){
@@ -86,4 +80,5 @@ private RaycastHit hit1;	//what the raycast hits
 			transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
 		}
 	}
+*/
 }

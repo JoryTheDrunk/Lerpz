@@ -12,6 +12,11 @@ public class HookDetector : MonoBehaviour {
         {
             player.GetComponentInChildren<GrapplingHook>().hooked = true;
             player.GetComponentInChildren<GrapplingHook>().hookedObject = other.gameObject;
+			print(other);
         }
+		else{
+			player.GetComponentInChildren<GrapplingHook>().ReturnHook();
+		}
     }
+
 }

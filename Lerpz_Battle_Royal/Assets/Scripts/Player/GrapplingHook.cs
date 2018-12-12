@@ -26,6 +26,10 @@ public class GrapplingHook : MonoBehaviour {
 
     private bool grounded;
 	
+	public OVRPlayerController ovr;
+	
+	public bool amLeftHand = false;
+	
 	// Update is called once per frame
 	void Update () {
         //change to OVR controls 
@@ -33,7 +37,18 @@ public class GrapplingHook : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && !fired)
         {
             fired = true;
+			print("Fire button");
         }
+			if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger) && !fired && amLeftHand == true)
+			{
+				fired = true;
+				print("Fire button");
+			}
+			if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) && !fired && amLeftHand == false)
+			{
+				fired = true;
+				print("Fire button");
+			}
 
         if (fired && !hooked)
         {
@@ -43,6 +58,7 @@ public class GrapplingHook : MonoBehaviour {
             if(currentDistance >= maxDistance)
             {
                 ReturnHook();
+				print("ReturnHook");
             }
         }
 
@@ -52,54 +68,56 @@ public class GrapplingHook : MonoBehaviour {
             rope.SetVertexCount(2);
             rope.SetPosition(0, hookHolder.transform.position);
             rope.SetPosition(1, hook.transform.position);
+			print("bool fire");
         }
 
         if (hooked && fired)
         {
-            hook.transform.parent = hookedObject.transform;
+			print("Hooked & fired");
+            //hook.transform.parent = hookedObject.transform;
 
-            player.transform.position = Vector3.MoveTowards(player.transform.position, hook.transform.position, Time.deltaTime * playerTravelSpeed);
-            float distanceToHook = Vector3.Distance(transform.position, hook.transform.position);
+            player.transform.position = Vector3.MoveTowards(player.transform.position, hookedObject.transform.position, Time.deltaTime * playerTravelSpeed);
+            float distanceToHook = Vector3.Distance(transform.position, hookedObject.transform.position);
 
-            this.GetComponent<Rigidbody>().useGravity = false;
-
+            //this.GetComponent<Rigidbody>().useGravity = false;
+			ovr.GravityModifier = 0;
 
             if(distanceToHook < 2)
             {
                 if (!grounded)
                 {
-                    this.transform.Translate(Vector3.forward * Time.deltaTime * 13f);
-                    this.transform.Translate(Vector3.up * Time.deltaTime * 18f);
+                    //this.transform.Translate(Vector3.forward * Time.deltaTime * 13f);
+                    //this.transform.Translate(Vector3.up * Time.deltaTime * 18f);
                 }
 
-                StartCoroutine("Climb");
+                ReturnHook();
             }
             else
             {
-                hook.transform.parent = hookHolder.transform;
-                this.GetComponent<Rigidbody>().useGravity = true;
+                hook.transform.position = hookHolder.transform.position;
+                //this.GetComponent<Rigidbody>().useGravity = true;
+				ovr.GravityModifier = 1;
             }
         }
 
 	}
 
-    IEnumerator Climb()
-    {
-        yield return new WaitForSeconds(0.1f);
-        ReturnHook();
-    }
 
-    void ReturnHook()
+    public void ReturnHook()
     {
+		print("Returned");
+		//hook.transform.parent = hookHolder.transform;
         hook.transform.rotation = hookHolder.transform.rotation;
         hook.transform.position = hookHolder.transform.position;
         fired = false;
         hooked = false;
-
+		ovr.GravityModifier = 1;
         LineRenderer rope = hook.GetComponent<LineRenderer>();
         rope.SetVertexCount(0);
     }
-
+	void OnDisable(){
+		ReturnHook();
+	}
     void CheckIfGrounded()
     {
         RaycastHit hit;

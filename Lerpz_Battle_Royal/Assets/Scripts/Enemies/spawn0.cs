@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class spawn0 : MonoBehaviour {
 
-public Rigidbody enemy0;
+private int rand = 0;
+public Transform[] enemy0 = new Transform[1];
 
-	void Start(){	
-		Rigidbody clone0;
-			clone0 = Instantiate(enemy0, transform.position, transform.rotation);
+	void Start(){
+		rand = Random.Range(0, enemy0.Length);
+		Instantiate(enemy0[rand], transform.position, transform.rotation);
 	}
-
 }

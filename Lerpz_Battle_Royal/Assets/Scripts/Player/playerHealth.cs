@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 [AddComponentMenu("(Player)/Health")]
 
 public class playerHealth : MonoBehaviour {
@@ -16,6 +17,7 @@ public int ouch3 = 0;	//damage from tag Bullet3, enemy hurts player
 public int ammo0 = 0;	//the ammo for the gun
 public int grap0 = 0;	//the grapplehook cool down
 public Slider pHP;		//the slider used as the player health bar
+public string deathScene;	//the scene to load upon death
 
 		//playerHP.text = "Health: " + health.ToString();
 		
@@ -28,22 +30,31 @@ public Slider pHP;		//the slider used as the player health bar
 		pHP.value = health;
 		
 		if(health < 1){
-			//death
+			//play sound?
+			SceneManager.LoadScene(deathScene);		//reloads the current scene, can be used to load a death scene however
+			Debug.Log("Player has died, restarting scene.");
 		}
+			//this just keep the health from going over the maximum 
 		if(health > maxHP){
 			health = maxHP;
+		}
+		if(Input.GetKeyDown("r")){
+			SceneManager.LoadScene(deathScene);
 		}
 	}
 
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Bullet1"){
 			health -= ouch1;
+			//play sound?
 		}
 		if(other.gameObject.tag == "Bullet2"){
 			health -= ouch2;
+			//play sound?
 		}
 		if(other.gameObject.tag == "Bullet3"){
 			health -= ouch3;
+			//play sound?
 		}
 	}
 }
