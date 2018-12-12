@@ -32,7 +32,20 @@ public class WeaponSwapping : MonoBehaviour {
 	}
 
 	void SwitchWeapon() {
-		if (Input.GetKey (KeyCode.Tab) && canSwitch == true) {
+		if (Input.GetKeyDown (KeyCode.Tab) && canSwitch == true) {
+			StartCoroutine (CanSwitchWeapons ());
+			currentWeapon++;
+
+			if (currentWeapon >= weapons.Length)
+				currentWeapon = 0;
+
+			Reset ();
+
+			weapons [currentWeapon].SetActive (true);
+
+		
+		}
+		if (OVRInput.GetDown(OVRInput.Button.One) && canSwitch == true) {
 			StartCoroutine (CanSwitchWeapons ());
 			currentWeapon++;
 
