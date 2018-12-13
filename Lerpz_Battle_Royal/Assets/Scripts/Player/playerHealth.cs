@@ -18,6 +18,7 @@ public int ammo0 = 0;	//the ammo for the gun
 public int grap0 = 0;	//the grapplehook cool down
 public Slider pHP;		//the slider used as the player health bar
 public string deathScene;	//the scene to load upon death
+public string menuScene;	//for the main menu
 
 		//playerHP.text = "Health: " + health.ToString();
 		
@@ -38,8 +39,11 @@ public string deathScene;	//the scene to load upon death
 		if(health > maxHP){
 			health = maxHP;
 		}
-		if(Input.GetKeyDown("r")){
+		if(Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene(deathScene);
+		}
+		if(Input.GetKey(KeyCode.Escape)){
+			SceneManager.LoadScene(menuScene);
 		}
 	}
 

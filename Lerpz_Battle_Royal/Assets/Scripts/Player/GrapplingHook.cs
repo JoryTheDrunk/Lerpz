@@ -20,7 +20,7 @@ public class GrapplingHook : MonoBehaviour {
     public bool fired;
     public bool hooked;
     public GameObject hookedObject;
-
+	
     public float maxDistance;
     private float currentDistance;
 
@@ -28,27 +28,32 @@ public class GrapplingHook : MonoBehaviour {
 	
 	public OVRPlayerController ovr;
 	
-	public bool amLeftHand = false;
+	public bool amLeftHand = false;	//-JAM
+	public HookDetector hd;			//-JAM
+	
 	
 	// Update is called once per frame
 	void Update () {
         //change to OVR controls 
         //Firing the hook
-        if (Input.GetMouseButtonDown(0) && !fired)
+        if (Input.GetMouseButtonDown(1) && !fired)
         {
             fired = true;
+			hd.actuallyShot = true;
 			print("Fire button");
         }
-			if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger) && !fired && amLeftHand == true)
-			{
-				fired = true;
-				print("Fire button");
-			}
-			if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) && !fired && amLeftHand == false)
-			{
-				fired = true;
-				print("Fire button");
-			}
+		if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger) && !fired && amLeftHand == true)
+		{
+			fired = true;
+			hd.actuallyShot = true;
+			print("Fire button");
+		}
+		if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) && !fired && amLeftHand == false)
+		{
+			fired = true;
+			hd.actuallyShot = true;
+			print("Fire button");
+		}
 
         if (fired && !hooked)
         {
@@ -75,12 +80,13 @@ public class GrapplingHook : MonoBehaviour {
         {
 			print("Hooked & fired");
             //hook.transform.parent = hookedObject.transform;
-
+			//ovr.isGrappled = true;
+			//ovr.GravityModifier = 0;
             player.transform.position = Vector3.MoveTowards(player.transform.position, hookedObject.transform.position, Time.deltaTime * playerTravelSpeed);
             float distanceToHook = Vector3.Distance(transform.position, hookedObject.transform.position);
 
             //this.GetComponent<Rigidbody>().useGravity = false;
-			ovr.GravityModifier = 0;
+			
 
             if(distanceToHook < 2)
             {
@@ -96,7 +102,7 @@ public class GrapplingHook : MonoBehaviour {
             {
                 hook.transform.position = hookHolder.transform.position;
                 //this.GetComponent<Rigidbody>().useGravity = true;
-				ovr.GravityModifier = 1;
+				//ovr.GravityModifier = 1;
             }
         }
 
@@ -114,25 +120,10 @@ public class GrapplingHook : MonoBehaviour {
 		ovr.GravityModifier = 1;
         LineRenderer rope = hook.GetComponent<LineRenderer>();
         rope.SetVertexCount(0);
+		ovr.isGrappled = false;
+		hd.actuallyShot = false;
     }
 	void OnDisable(){
 		ReturnHook();
 	}
-    void CheckIfGrounded()
-    {
-        RaycastHit hit;
-        float distance = 1f;
-
-        Vector3 dir = new Vector3(0, -1);
-
-        if(Physics.Raycast(transform.position,dir,out hit, distance))
-        {
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
-
-    }
 }
