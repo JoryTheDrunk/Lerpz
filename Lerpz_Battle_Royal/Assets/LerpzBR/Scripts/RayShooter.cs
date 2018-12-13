@@ -32,7 +32,7 @@ public class RayShooter : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
+        if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger) || Input.GetMouseButtonDown(1))
         {
 			pewpew.enabled = true;	//enables the line renderer, giving off a shooting effect /-JAM
 			beam = 10;	//sets the timer to disable the line renderer /-JAM

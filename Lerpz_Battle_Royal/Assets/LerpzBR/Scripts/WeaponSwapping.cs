@@ -45,7 +45,7 @@ public class WeaponSwapping : MonoBehaviour {
 
 		
 		}
-		if (OVRInput.GetDown(OVRInput.Button.One) && canSwitch == true) {
+		if (OVRInput.GetDown(OVRInput.Button.Two) && canSwitch == true) {
 			StartCoroutine (CanSwitchWeapons ());
 			currentWeapon++;
 
