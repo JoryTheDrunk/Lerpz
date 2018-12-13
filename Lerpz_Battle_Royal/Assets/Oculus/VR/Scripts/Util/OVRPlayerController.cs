@@ -28,6 +28,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class OVRPlayerController : MonoBehaviour
 {
+	public bool isGrappled = false;
 	/// <summary>
 	/// The rate acceleration during movement.
 	/// </summary>
@@ -267,14 +268,19 @@ public class OVRPlayerController : MonoBehaviour
 		moveDirection += MoveThrottle * SimulationRate * Time.deltaTime;
 
 		// Gravity
-		if (Controller.isGrounded && FallSpeed <= 0)
-			FallSpeed = ((Physics.gravity.y * (GravityModifier * 0.002f)));
-		else
-			FallSpeed += ((Physics.gravity.y * (GravityModifier * 0.002f)) * SimulationRate * Time.deltaTime);
+		if(isGrappled == false){
+			Controller.enabled = true;
+			if (Controller.isGrounded && FallSpeed <= 0)
+				FallSpeed = ((Physics.gravity.y * (GravityModifier * 0.002f)));
+			else
+				FallSpeed += ((Physics.gravity.y * (GravityModifier * 0.002f)) * SimulationRate * Time.deltaTime);
+			
+			moveDirection.y += FallSpeed * SimulationRate * Time.deltaTime;
+		}
 
-		moveDirection.y += FallSpeed * SimulationRate * Time.deltaTime;
-
-
+		if(isGrappled == true){
+			Controller.enabled = false;
+		}
 		if (Controller.isGrounded && MoveThrottle.y <= transform.lossyScale.y * 0.001f)
 		{
 			// Offset correction for uneven ground
@@ -315,7 +321,7 @@ public class OVRPlayerController : MonoBehaviour
 			bool moveBack = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
 
 			bool dpad_move = false;
-
+			
 			if (OVRInput.Get(OVRInput.Button.DpadUp))
 			{
 				moveForward = true;
@@ -343,11 +349,13 @@ public class OVRPlayerController : MonoBehaviour
 
 			// Compute this for key movement
 			float moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
-
+				
 			// Run!
-			if (dpad_move || Input.GetKey(KeyCode.LeftShift) || OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
+			if (Input.GetKey(KeyCode.LeftShift) || OVRInput.Get(OVRInput.RawButton.LHandTrigger)){
 				moveInfluence *= 2.0f;
-
+				
+			}
+			
 			Quaternion ort = transform.rotation;
 			Vector3 ortEuler = ort.eulerAngles;
 			ortEuler.z = ortEuler.x = 0f;
@@ -362,7 +370,6 @@ public class OVRPlayerController : MonoBehaviour
 			if (moveRight)
 				MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
 
-			moveInfluence = Acceleration * 0.1f * MoveScale * MoveScaleMultiplier;
 
 #if !UNITY_ANDROID // LeftTrigger not avail on Android game pad
 			//moveInfluence *= 1.0f + OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
@@ -371,26 +378,24 @@ public class OVRPlayerController : MonoBehaviour
 			Vector2 primaryAxis = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
 			// If speed quantization is enabled, adjust the input to the number of fixed speed steps.
-			if (FixedSpeedSteps > 0)
-			{
-				primaryAxis.y = Mathf.Round(primaryAxis.y * FixedSpeedSteps) / FixedSpeedSteps;
-				primaryAxis.x = Mathf.Round(primaryAxis.x * FixedSpeedSteps) / FixedSpeedSteps;
-			}
+			//if (FixedSpeedSteps > 0)
+		//	{
+		//		primaryAxis.y = Mathf.Round(primaryAxis.y * FixedSpeedSteps) / FixedSpeedSteps;
+		//		primaryAxis.x = Mathf.Round(primaryAxis.x * FixedSpeedSteps) / FixedSpeedSteps;
+		//	}
 
 			if (primaryAxis.y > 0.0f)
-				MoveThrottle += ort * (primaryAxis.y * transform.lossyScale.z * moveInfluence * Vector3.forward);
+				MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * Vector3.forward);
 
 			if (primaryAxis.y < 0.0f)
-				MoveThrottle += ort * (Mathf.Abs(primaryAxis.y) * transform.lossyScale.z * moveInfluence *
-									   BackAndSideDampen * Vector3.back);
+				MoveThrottle += ort * (transform.lossyScale.z * moveInfluence * BackAndSideDampen * Vector3.back);
 
 			if (primaryAxis.x < 0.0f)
-				MoveThrottle += ort * (Mathf.Abs(primaryAxis.x) * transform.lossyScale.x * moveInfluence *
-									   BackAndSideDampen * Vector3.left);
+				MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.left);
 
 			if (primaryAxis.x > 0.0f)
-				MoveThrottle += ort * (primaryAxis.x * transform.lossyScale.x * moveInfluence * BackAndSideDampen *
-									   Vector3.right);
+				MoveThrottle += ort * (transform.lossyScale.x * moveInfluence * BackAndSideDampen * Vector3.right);
+
 		}
 
 		if (EnableRotation)
@@ -453,7 +458,9 @@ public class OVRPlayerController : MonoBehaviour
 
 			transform.rotation = Quaternion.Euler(euler);
 		}
-		if(OVRInput.GetDown(OVRInput.Button.Two)) Jump();
+		if(OVRInput.GetDown(OVRInput.Button.One)) Jump();
+		
+		if(Input.GetKeyDown("space")) Jump();
 	}
 
 
