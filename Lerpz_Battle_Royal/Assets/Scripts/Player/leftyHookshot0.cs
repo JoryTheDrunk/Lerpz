@@ -1,14 +1,10 @@
-﻿//Cale Toburen
-//Ethen Quandt
-//11/6/18
-//CSG-120
-
+﻿//-JAM, Cale's work, but I duplicated it for left hand
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[AddComponentMenu("(Player)/Grapple")]	//easy locate, added by Joey
+[AddComponentMenu("(Player)/Lefty Hookshot")]
 
-public class GrapplingHook : MonoBehaviour {
+public class leftyHookshot0 : MonoBehaviour {
 
     public GameObject hook;
     public GameObject hookHolder;
@@ -29,7 +25,7 @@ public class GrapplingHook : MonoBehaviour {
 	public OVRPlayerController ovr;
 	
 	//public bool amLeftHand = false;	//-JAM
-	public HookDetector hd;			//-JAM
+	public leftyHookDetector hd;			//-JAM
 	
 	
 	// Update is called once per frame
@@ -42,13 +38,13 @@ public class GrapplingHook : MonoBehaviour {
 			hd.actuallyShot = true;
 			print("Fire button");
         }
-		if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) && !fired)
+		if (OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger) && !fired)
 		{
 			fired = true;
 			hd.actuallyShot = true;
 			print("Fire button");
 		}
-		if(OVRInput.GetUp(OVRInput.RawButton.RIndexTrigger)){
+		if(OVRInput.GetUp(OVRInput.RawButton.LIndexTrigger)){
 			ReturnHook();
 		}
 
@@ -95,12 +91,12 @@ public class GrapplingHook : MonoBehaviour {
 
                 ReturnHook();
             }
-           // else
-          //  {
-           //     hook.transform.position = hookHolder.transform.position;
+          //  else
+            //{
+              //  hook.transform.position = hookHolder.transform.position;
                 //this.GetComponent<Rigidbody>().useGravity = true;
 				//ovr.GravityModifier = 1;
-           // }
+            //}
         }
 
 	}

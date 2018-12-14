@@ -13,9 +13,10 @@ public GameObject oldGunL;
 public GameObject oldGunR;
 public GameObject newGunL;
 public GameObject newGunR;
+public Rigidbody poof;		//the rigidbody/game object to spawn for particle effect
 
 	void Start(){
-		var temp0 = GameObject.FindWithTag("Player");
+		var temp0 = GameObject.FindWithTag("PlayerStats");
 		stat = temp0.GetComponent<playerHealth>();
 	}
 	
@@ -23,7 +24,8 @@ public GameObject newGunR;
 		if(other.gameObject.tag == "Player"){
 			stat.ouch0 = stat.ouch0 * 2;	//multiplies the damage
 			SwapModels();	//calls the model swapping event
-			//play sound?
+			Rigidbody clone;
+				clone = Instantiate(poof, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}
 	}

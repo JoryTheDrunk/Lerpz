@@ -19,11 +19,14 @@ public int grap0 = 0;	//the grapplehook cool down
 public Slider pHP;		//the slider used as the player health bar
 public string deathScene;	//the scene to load upon death
 public string menuScene;	//for the main menu
+public AudioClip oof;	//sound for taking damage
+private AudioSource ply;//the audio source to play the sound
 
 		//playerHP.text = "Health: " + health.ToString();
 		
 	void Start(){
 		health = maxHP;
+		ply = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update(){
@@ -50,15 +53,15 @@ public string menuScene;	//for the main menu
 	void OnTriggerEnter(Collider other){
 		if(other.gameObject.tag == "Bullet1"){
 			health -= ouch1;
-			//play sound?
+			ply.PlayOneShot(oof);
 		}
 		if(other.gameObject.tag == "Bullet2"){
 			health -= ouch2;
-			//play sound?
+			ply.PlayOneShot(oof);
 		}
 		if(other.gameObject.tag == "Bullet3"){
 			health -= ouch3;
-			//play sound?
+			ply.PlayOneShot(oof);
 		}
 	}
 }

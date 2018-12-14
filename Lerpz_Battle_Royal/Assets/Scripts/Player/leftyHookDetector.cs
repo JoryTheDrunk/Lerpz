@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿//-JAM, Cale's work, but I duplicated it for left hand
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[AddComponentMenu("(Player)/Lefty Hook Detect")]
 
-public class HookDetector : MonoBehaviour {
+public class leftyHookDetector : MonoBehaviour {
 
     public GameObject player;
 	public OVRPlayerController ovr;
@@ -14,12 +16,12 @@ public class HookDetector : MonoBehaviour {
         {
 			ovr.isGrappled = true;
 			ovr.GravityModifier = 0;
-            player.GetComponentInChildren<GrapplingHook>().hooked = true;
-            player.GetComponentInChildren<GrapplingHook>().hookedObject = other.gameObject;
+            player.GetComponentInChildren<leftyHookshot0>().hooked = true;
+            player.GetComponentInChildren<leftyHookshot0>().hookedObject = other.gameObject;
 			print(other);
         }
 		else if(other.gameObject.tag != "EnemySphere" || other.gameObject.tag != "Hookable" || other.gameObject.tag != "Bullet1" || other.gameObject.tag != "Bullet2" || other.gameObject.tag != "Bullet3"){
-			player.GetComponentInChildren<GrapplingHook>().ReturnHook();
+			player.GetComponentInChildren<leftyHookshot0>().ReturnHook();
 		}
     }
 
