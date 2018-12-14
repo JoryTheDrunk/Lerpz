@@ -286,6 +286,7 @@ MonoBehaviour:
   boostHurt: 5
   stat: {fileID: 0}
   ded: {fileID: 0}
+  poof: {fileID: 54433347325054506, guid: b969867f68216694aa8baaebb20e1052, type: 2}
 --- !u!135 &135569839631327992
 SphereCollider:
   m_ObjectHideFlags: 1

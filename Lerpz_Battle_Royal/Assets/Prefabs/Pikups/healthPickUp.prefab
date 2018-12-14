@@ -229,6 +229,7 @@ MonoBehaviour:
   healing: 50
   stat: {fileID: 0}
   ded: {fileID: 0}
+  poof: {fileID: 54433347325054506, guid: 0c0ca6a1990c3974e9224237bab40819, type: 2}
 --- !u!135 &135176332802259436
 SphereCollider:
   m_ObjectHideFlags: 1

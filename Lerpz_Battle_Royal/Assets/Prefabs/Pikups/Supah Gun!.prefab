@@ -111,6 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 0}
+  oldGunL: {fileID: 0}
+  oldGunR: {fileID: 0}
+  newGunL: {fileID: 0}
+  newGunR: {fileID: 0}
+  poof: {fileID: 54433347325054506, guid: 1092485bb1c526e4eb35458a74bf886d, type: 2}
 --- !u!135 &135299009858085686
 SphereCollider:
   m_ObjectHideFlags: 1

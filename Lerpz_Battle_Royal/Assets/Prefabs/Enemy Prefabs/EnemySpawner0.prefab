@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114340646734116772}
   m_Layer: 2
   m_Name: EnemySpawner0
-  m_TagString: Untagged
+  m_TagString: EnemySphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,4 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af39b66925c2bb4aa871aae2838cd5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy0: {fileID: 54010617384847262, guid: 8892e37ece65de146b70c8e97aa401ff, type: 2}
+  enemy0:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
