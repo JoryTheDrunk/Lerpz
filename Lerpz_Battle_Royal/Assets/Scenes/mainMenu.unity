@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af723d10168b534db35f4ce3c323152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: mainGameRoom
+  levelName: loadMainGame0
   amQuit: 0
 --- !u!65 &1284628645
 BoxCollider:
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af723d10168b534db35f4ce3c323152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: mapCredits
+  levelName: loadMapCredits0
   amQuit: 0
 --- !u!65 &1627324738
 BoxCollider:
@@ -844,6 +844,28 @@ Prefab:
     - target: {fileID: 114109742518335096, guid: bd493f973a0a6984ab4b4d7bc0b56f36,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114788981718148656, guid: bd493f973a0a6984ab4b4d7bc0b56f36,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682150234243910, guid: bd493f973a0a6984ab4b4d7bc0b56f36,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774775285769770, guid: bd493f973a0a6984ab4b4d7bc0b56f36, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919545669034228, guid: bd493f973a0a6984ab4b4d7bc0b56f36, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704352533560382, guid: bd493f973a0a6984ab4b4d7bc0b56f36, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
